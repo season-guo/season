@@ -1,35 +1,47 @@
-#include<vector>
-#include<iostream>
+#include <vector>
+#include <iostream>
 using namespace std;
-class my_queue{
-    public:
+class my_queue
+{
+public:
     int capacity;
     int *arr;
     int rear;
     int front;
     int size;
-    int init(int cap){
-        capacity=cap;
+    my_queue(int cap)
+    {
+        capacity = cap;
         int a[cap];
-        arr=a;
+        arr = a;
     }
-    int empty(){
-        return size==0; 
+    int empty()
+    {
+        return size == 0;
     }
-    int size(){
+    int size()
+    {
         return size;
     }
-    int front(){
+    int front()
+    {
         return arr[front];
     }
-    int back(){
+    int back()
+    {
         return arr[rear];
     }
-    void push(int ele){
-        rear=(rear+1)%capacity;
-        arr[rear]=ele;
+    void push(int ele)
+    {
+        if (rear = front)
+            cerr << "full!" << endl;
+        else
+            rear = (rear + 1) % capacity;
+        arr[rear] = ele;
     }
-    void pop(){
-        front=(front+1)%capacity;
+    void pop()
+    {
+        if (front != rear)
+            front = (front + 1) % capacity;
     }
 };
